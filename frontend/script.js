@@ -1,4 +1,4 @@
-// Функція реєстрації користувача
+// Р¤СѓРЅРєС†С–СЏ СЂРµС”СЃС‚СЂР°С†С–С— РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
 document.getElementById('registerForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -11,7 +11,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
     if (users.find(user => user.username === username)) {
-        alert('Цей логін вже зайнятий!');
+        alert('Р¦РµР№ Р»РѕРіС–РЅ РІР¶Рµ Р·Р°Р№РЅСЏС‚РёР№!');
         return;
     }
 
@@ -19,35 +19,35 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
 
-    alert('Реєстрація успішна!');
+    alert('Р РµС”СЃС‚СЂР°С†С–СЏ СѓСЃРїС–С€РЅР°!');
     document.getElementById('registration-form').style.display = 'none';
     document.getElementById('iqTest').style.display = 'block';
 });
 
-// Функція для проходження тесту IQ
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РїСЂРѕС…РѕРґР¶РµРЅРЅСЏ С‚РµСЃС‚Сѓ IQ
 document.getElementById('iqForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     let iqScore = 0;
 
-    // Перевірка на питання IQ
+    // РџРµСЂРµРІС–СЂРєР° РЅР° РїРёС‚Р°РЅРЅСЏ IQ
     if (document.getElementById('iqQuestion1').value.trim() === '8') iqScore++;
-    if (document.getElementById('iqQuestion2').value.trim() === 'Миша') iqScore++;
+    if (document.getElementById('iqQuestion2').value.trim() === 'РњРёС€Р°') iqScore++;
     if (document.getElementById('iqQuestion3').value.trim() === '9') iqScore++;
-    if (document.getElementById('iqQuestion4').value.trim().toLowerCase() === 'так') iqScore++;
-    if (document.getElementById('iqQuestion5').value.trim().toLowerCase() === 'в') iqScore++;
+    if (document.getElementById('iqQuestion4').value.trim().toLowerCase() === 'С‚Р°Рє') iqScore++;
+    if (document.getElementById('iqQuestion5').value.trim().toLowerCase() === 'РІ') iqScore++;
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const currentUser = users[users.length - 1]; // Останній зареєстрований користувач
+    const currentUser = users[users.length - 1]; // РћСЃС‚Р°РЅРЅС–Р№ Р·Р°СЂРµС”СЃС‚СЂРѕРІР°РЅРёР№ РєРѕСЂРёСЃС‚СѓРІР°С‡
     currentUser.iqScore = iqScore;
     localStorage.setItem('users', JSON.stringify(users));
 
-    alert('Тест IQ пройдено! Ваш бал: ' + iqScore);
+    alert('РўРµСЃС‚ IQ РїСЂРѕР№РґРµРЅРѕ! Р’Р°С€ Р±Р°Р»: ' + iqScore);
     document.getElementById('iqTest').style.display = 'none';
     document.getElementById('homePage').style.display = 'block';
 });
 
-// Функція для обчислення сумісності
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РѕР±С‡РёСЃР»РµРЅРЅСЏ СЃСѓРјС–СЃРЅРѕСЃС‚С–
 function calculateCompatibility(user1, user2) {
     const ageDifference = Math.abs(user1.age - user2.age);
     const iqDifference = Math.abs(user1.iqScore - user2.iqScore);
